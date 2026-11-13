@@ -1,0 +1,209 @@
+{
+  "schema_version": "selected-router-v1",
+  "provenance": "real_provider_train_only",
+  "data_id": "e184836c332d1f9966ac06762d6614bd745589ea179f97ca82776df97746a966",
+  "selected": {
+    "cost": "type_median",
+    "success": "type_probability"
+  },
+  "runtime_hash": "27df1c916ee51a98829452d49f2c03e5f89d605af7af611a2966e59e4d068da9",
+  "execution_budget": 8000,
+  "case_wall_seconds": 180,
+  "test_rows_consumed": 0,
+  "protocol_recovery": {
+    "max_retries": 1,
+    "trigger": "invalid_response",
+    "uses_existing_call_cap": true,
+    "estimates_calibrated": false,
+    "prediction_scope": "Measured base plans; conditional recovery cost/success not inferred"
+  },
+  "train_rows": 288,
+  "validation_rows": 96,
+  "export_parity_rows": 384,
+  "plans": [
+    {
+      "task_type": "coding",
+      "model": "qwen3.6-35b-a3b-noreason",
+      "plan_id": "direct:qwen3.6-35b-a3b-noreason",
+      "solver_identity": "5647c6dfcbbe4ba0a21fa4751b7151c7e403a625d654f15c465b34fb707c82f5",
+      "training_plan_signature": "617be818bbb34241727bab8dc9b69100df60ccceed4984de9422f28ea8283c96",
+      "budget_units": 432.29999999999995,
+      "p_success": 0.3,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "coding",
+      "model": "qwen3.8-27b",
+      "plan_id": "reason:qwen3.8-27b",
+      "solver_identity": "31bd59bd12127cd507144219989013ee693db34fa10e6e2c7cceb30120d31b1d",
+      "training_plan_signature": "7413f1a7b36ab32074d66c434622e830441686db3a73da1c0a906ffbef560a6d",
+      "budget_units": 575.65,
+      "p_success": 0.9,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "coding",
+      "model": "qwen3.6-35b-a3b",
+      "plan_id": "reason:qwen3.6-35b-a3b",
+      "solver_identity": "82fd1b0064493c4ed1a21e599f222333bc7af5c33d9975a3316d2f1f16679050",
+      "training_plan_signature": "8d979f5e745af489729767f139ec76ed7ee7b5475ec22d961a80cd18046f3829",
+      "budget_units": 1456.25,
+      "p_success": 0.85,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "coding",
+      "model": "qwen3.8-27b-noreason",
+      "plan_id": "direct:qwen3.8-27b-noreason",
+      "solver_identity": "9edbff1dc8a7695dbbc643bf9c8fc3b7ea106fe205c7de093a022ffffdbc1861",
+      "training_plan_signature": "ec18801c81806751bbe19b6b893f63bcd48fa98661ab437e8111301e48b7bda1",
+      "budget_units": 337.0,
+      "p_success": 0.55,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "data_analysis",
+      "model": "qwen3.6-35b-a3b",
+      "plan_id": "reason:qwen3.6-35b-a3b",
+      "solver_identity": "6904128fa4f4fdadedd5f9487c950b76f257044507adefd93ccffab9336bdc32",
+      "training_plan_signature": "0f137fd4d99d8ba83297f43905a8549c4e9f7f6bf9cd8eca42b3063b903ab0dd",
+      "budget_units": 1400.35,
+      "p_success": 0.7,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "data_analysis",
+      "model": "qwen3.6-35b-a3b-noreason",
+      "plan_id": "direct:qwen3.6-35b-a3b-noreason",
+      "solver_identity": "6ca48f56f6874cc7441c0dd479be8d91898479b8b0dba8219506d80f1b1746e9",
+      "training_plan_signature": "397095ca191b8f14a66cb79cf336819871dba32d14c9886cd4a0f5c5e162f32b",
+      "budget_units": 403.25,
+      "p_success": 0.75,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "data_analysis",
+      "model": "qwen3.8-27b-noreason",
+      "plan_id": "direct:qwen3.8-27b-noreason",
+      "solver_identity": "1214152af662bff1ee532dca05663083c4d7a074200e3ea8a6fcb75bd8dd545a",
+      "training_plan_signature": "5195196be55ff77e70f6400071a8459b1fbd4ec44e91d176ba478e0668e03dec",
+      "budget_units": 329.3,
+      "p_success": 0.75,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "data_analysis",
+      "model": "qwen3.8-27b",
+      "plan_id": "reason:qwen3.8-27b",
+      "solver_identity": "cadad70a1011f0079d27e00c4a453437fc74d5ad54fb6ffe7c87be381cc789a0",
+      "training_plan_signature": "d3f78056ee9e69179ed0b61d011a514ce71ffa204c4747cbae28af2bb4309999",
+      "budget_units": 656.4000000000001,
+      "p_success": 0.75,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "math",
+      "model": "qwen3.6-35b-a3b",
+      "plan_id": "reason:qwen3.6-35b-a3b",
+      "solver_identity": "15b052591f122793dc1d4837876a90f6e7a9921fcbc6f8da386053beb3e5177f",
+      "training_plan_signature": "177ffa0758462111b44623ef659056b2636611c64b6b3391ed29213c44360bc8",
+      "budget_units": 1058.25,
+      "p_success": 0.8,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "math",
+      "model": "qwen3.6-35b-a3b-noreason",
+      "plan_id": "direct:qwen3.6-35b-a3b-noreason",
+      "solver_identity": "7240376b2995f10b3ec17369e46ee9fb99ac19c8d074b4cbc3dc93109fc48cdf",
+      "training_plan_signature": "52e4e05c0bdb4e7921b217f5f4fe428960df3c5a214bf1e3c0d989ca7080783b",
+      "budget_units": 324.0,
+      "p_success": 0.8,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "math",
+      "model": "qwen3.8-27b-noreason",
+      "plan_id": "direct:qwen3.8-27b-noreason",
+      "solver_identity": "ab77581ae102610e155cc435765faabb416f785be3b953f698d11b528f9259cc",
+      "training_plan_signature": "9c1ec29867a08a9957001416fbc19b015038696b3651ab0dea8bf2a37c53458e",
+      "budget_units": 312.15,
+      "p_success": 0.6,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "math",
+      "model": "qwen3.8-27b",
+      "plan_id": "reason:qwen3.8-27b",
+      "solver_identity": "220c2b1632af7ad9b69b84ff3302ef50a581e7bbd14a87480c6da5b8e1d43328",
+      "training_plan_signature": "e45b601250c6194b112fec85e95c1c8a73c0e4bb2e9127214c15888c86ca42ba",
+      "budget_units": 411.85,
+      "p_success": 0.8,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "search",
+      "model": "qwen3.8-27b-noreason",
+      "plan_id": "direct:qwen3.8-27b-noreason",
+      "solver_identity": "600121d662252a6a340cc91d8dd6e0836d8fc2670d86ede8ae252771cd800b82",
+      "training_plan_signature": "23269f6afcadc25e268c0edff490bfc0abf2c76dbfc0eab4605c0fbb8547196d",
+      "budget_units": 446.15,
+      "p_success": 0.8,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "search",
+      "model": "qwen3.6-35b-a3b",
+      "plan_id": "reason:qwen3.6-35b-a3b",
+      "solver_identity": "f4e34eedb7741df2751a3895295f836360010f89c626342ce86d9c91d9c6ae71",
+      "training_plan_signature": "747334e849f871eacf2bcdc5b3855692de63dfef9f530dd2720cde7e6f71490d",
+      "budget_units": 1263.4,
+      "p_success": 0.8,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "search",
+      "model": "qwen3.8-27b",
+      "plan_id": "reason:qwen3.8-27b",
+      "solver_identity": "d1cdb73d973270d458b61976788d9b78073a3ba0b85ea62918f90fec384200e3",
+      "training_plan_signature": "8403a42b56e2899eaeb0f4a087bd74a9b6d45eddee30a048e4076f04bb50c9b2",
+      "budget_units": 505.6,
+      "p_success": 0.8,
+      "n": 18,
+      "n_groups": 9
+    },
+    {
+      "task_type": "search",
+      "model": "qwen3.6-35b-a3b-noreason",
+      "plan_id": "direct:qwen3.6-35b-a3b-noreason",
+      "solver_identity": "34227173ab595bba359afce4fa451951b31700057152e2b555777de2cbdcab1e",
+      "training_plan_signature": "d57bc67eab09c301a298df5e2f78f196dc84a30d944a90ecdc36a0742140090c",
+      "budget_units": 479.9,
+      "p_success": 0.7,
+      "n": 18,
+      "n_groups": 9
+    }
+  ],
+  "model_sha256": {
+    "cost": "9529bd89075be7b94dd6cfd41c67f5c189f29507817a8513d375b8d8d7dce1f7",
+    "success": "4efb9e05aea3afb9cf1af0f933ad1257178fc93801120a6cc935574cdc7a57ac"
+  },
+  "training_implementation_hashes": [
+    "99a7ea721dc2c655cd561e2d0127660edfdc306ec22c81d80a58cda9d94e7995"
+  ],
+  "compatibility": "Solver Config fields match the measured base plans. One format retry is an explicit unmeasured recovery overlay within the same caps; runtime hash audited separately. Cascades are not inferred from singles."
+}

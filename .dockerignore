@@ -1,0 +1,14 @@
+**
+!Dockerfile
+!requirements.lock
+!requirements-build.lock
+!run_agent.py
+!collect_worker.py
+!grade_examples.py
+!config.example.json
+!harness/
+!harness/*.py
+!configs/
+!configs/learned-router-r1-submit.json
+!configs/learned-router-r1-submit-review.json
+!configs/learned-router-v2.json
