@@ -13,7 +13,8 @@ RUNTIME_FILES = ('harness/core.py', 'harness/agent.py', 'harness/provider.py', '
                  'harness/deployed.py', 'harness/rate_limit.py', 'run_agent.py')
 CONTROL_BUNDLE = ROOT / 'configs/learned-router-v2.json'
 # Keep RUNTIME_FILES as the original control manifest, reproducible from Git.
-RUNTIME_EXTENSIONS = ('harness/sufficiency.py', 'harness/sufficiency_text.py')
+RUNTIME_EXTENSIONS = ('harness/sufficiency.py', 'harness/sufficiency_text.py',
+                      'harness/table_engine.py', 'harness/table_actions.py', 'harness/query_policy.py')
 DEFAULT_BUNDLE = ROOT / 'configs/learned-router-r1-submit.json'
 RUNTIME_REVIEW = ROOT / 'configs/learned-router-r1-submit-review.json'
 
@@ -79,6 +80,7 @@ def validate_binding(bundle):
             or review.get('parent_bundle_sha256') != binding.get('parent_bundle_sha256')
             or binding.get('source_runtime_hash') != parent['runtime_hash']
             or binding.get('forecast_support') != 'inherited_v2_base_plan_estimates'
+            or binding.get('execution_policy') != review.get('execution_policy')
             or binding.get('real_quality_revalidated') is not False):
         raise BundleCompatibilityError('Runtime/configuration differs from the reviewed compatibility contract')
 
@@ -116,13 +118,16 @@ class LearnedRouter:
         entry = self.entries.get((task['task_type'], solver_identity(config)))
         if entry is None:
             raise ValueError('No measured support for this model/workflow/prompt/caps')
+        overlay = task['task_type']=='data_analysis' and config.model=='qwen3.8-27b-noreason'
         return {key: entry[key] for key in ('budget_units', 'p_success', 'n', 'n_groups')} | {
-            'method': 'selected_train_estimators', 'cost_estimator': self.bundle['selected']['cost'],
+            'method': 'historical_base_plan_proxy' if overlay else 'selected_train_estimators',
+            'execution_policy': 'table-query-direct-v1' if overlay else 'base',
+            'estimates_calibrated_for_execution_policy': not overlay, 'cost_estimator': self.bundle['selected']['cost'],
             'success_estimator': self.bundle['selected']['success'], 'data_id': self.bundle['data_id'],
             'training_plan_signature': entry['training_plan_signature'],
             'solver_identity': entry['solver_identity'], 'execution_budget': self.execution_budget,
             'max_protocol_retries': self.max_protocol_retries,
-            'forecast_support': self.bundle.get('runtime_binding', {}).get('forecast_support', 'measured_v2_base_plans'),
+            'forecast_support': 'historical_base_plan_proxy_for_query_overlay' if overlay else self.bundle.get('runtime_binding', {}).get('forecast_support', 'measured_v2_base_plans'),
             'real_quality_revalidated': False if self.bundle.get('runtime_binding') else None,
             'recovery_estimates_calibrated': False,
             'case_wall_seconds': self.case_wall_seconds, 'prediction_point': 'before_agent_start',

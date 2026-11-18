@@ -6,7 +6,7 @@
     "cost": "type_median",
     "success": "type_probability"
   },
-  "runtime_hash": "df7973e3f666288c64c32079e720e6f005ae7279ed028c3a56f53e94a5c150f0",
+  "runtime_hash": "60a683b568bb3bb18b0245fb1bda43ab362c580c87c8a2dd8450fb88f2d19227",
   "execution_budget": 8000,
   "case_wall_seconds": 180,
   "test_rows_consumed": 0,
@@ -213,28 +213,27 @@
     "source_runtime_hash": "27df1c916ee51a98829452d49f2c03e5f89d605af7af611a2966e59e4d068da9",
     "control_git_revision": "f02835b1de6a92ccab41d6c3b0e8fe680a800703",
     "review": "configs/learned-router-r1-submit-review.json",
-    "review_sha256": "7d2897a2e7668522d3d28f34989bac2bc7f114adffabaaa0f0cfe6622f00e13c",
+    "review_sha256": "3cf4508a5444bd66aa272927d64ffac2613ed0ebf13176dcfadc87e5eb63a9e2",
     "forecast_support": "inherited_v2_base_plan_estimates",
     "real_quality_revalidated": false,
     "limitations": [
-      "Local P2 candidate only. No new real-provider quality, cost, calibration, token savings or benchmark measurement.",
-      "Original v2 estimates are inherited only for unchanged base solver model/prompt/caps. Enabled preflight skip changes policy outcomes and has no measured success/expense estimates.",
-      "Checker defaults off; observe records diagnostics without changing model-facing messages or planning decisions, except bounded local wall time. Explicit skip is limited to exact supported public contracts and complete Missing before first send.",
-      "Post-tool diagnostics read original named public source paths as observed after an already paid tool action; they cannot skip or save the first model call. Failed/truncated tool output never supplies Missing.",
-      "Natural-language operations outside the explicit latest_sum grammar, undeclared derivations, nonfunctional/unknown chains and incomplete sources are unsupported/Unknown. Local time checks are cooperative between bounded parsing/regular-file I/O operations.",
-      "Historical P1 termination/deadline/admission changes remain reviewed here. Old control and P1 bundles/reviews are preserved and require their matching source snapshots.",
-      "Text applicability is limited to one full-sentence CSV operation chosen from two public train inputs. No general natural-language interpretation or classification.",
-      "128 public tasks inspected only for applicability after design freeze: 2 plans/Found, 126 Unknown, 0 Missing. No demonstrated savings on historical underdetermined tasks; holdout/original regression did not tune rules.",
-      "Additional known unmodeled fields/sources can downgrade natural-language nulls to Unknown; numeric/order failures cannot prove Missing.",
-      "New independent text fixtures exercise paraphrases, schema/path/entity renames, empty input, irrelevant nulls, explicit product/zero, ambiguity and limits; private expectations never enter interpreter.",
-      "Admission gate rejected paid P2 pilot: 24 fresh development tasks in 9 mechanism families, 4 plans only in deliberate positive controls, 0/20 outside controls. Two certified Missing controls, no false Missing/skip among 12 solvable fixtures. This is not an estimate on the competition distribution.",
-      "Independent SQLite references and two-world/interpretation ambiguity certificates are private-grader-only. Gate and public/private hashes were sealed before each offline comparison.",
-      "No real paired solver experiment, no score/cost/call savings or 15% expense criterion measured. Existing campaign collector was reviewed; paid preparation was not warranted after offline no-go.",
-      "JSON zero represented as floating 0.0 with an unknown other factor stays Unknown: parser may have underflowed a nonzero literal. Integer/string exact zero is safely derivable.",
-      "R1 wrapper import compatibility is verified only with local subprocesses and synthetic MockTransport responses, including the exact saved P3 response. No new API calls, measured score gain, cost/call saving, calibration or real quality revalidation.",
-      "The sole helper module is submit_answer, reserved in the isolated tool sys.modules. It exposes the existing functions and does not persist into nested independently launched interpreters or the controlling process. Python tooling remains container-dependent, not a new security sandbox.",
-      "Prompts, revision bounded-json-agent-v4 and all sixteen solver configurations remain unchanged. External contract documentation is not supplied to the model. Historical traces and previous bundles/reviews remain valid only for their original runtime snapshots.",
-      "Current source includes the prior reviewed cancellation/answer boundary/P2 changes; P2 defaults off. R1 changes no selection, model, cap, budget reserve, budget-tail plan or concurrency."
-    ]
+      "Historical routing estimates and execution caps are unchanged. Only data_analysis qwen3.8-27b-noreason execution is overlaid with table-query-direct-v1; no 25% discount is applied to forecasts.",
+      "The overlay changes the model prompt and answer protocol; old CSV success/cost estimates are proxies, not measurements of this new policy. Other solver model/prompt/caps remain unchanged.",
+      "Development pilot on 16 identical synthetic tasks: baseline 3218.2 units, query v2 2412.6; all 14 solvable answered correctly, two underdetermined cases had no answer file, one lacked explicit skip. Baseline is historical, not contemporaneous.",
+      "The current prompt additionally names fractional revenue support and skip_task. These instruction changes have offline tests, not a new live quality run.",
+      "This execution scope patches process-local prompt/tool functions and is supported only by the existing serial runner. Concurrency requires per-task isolation and shared in-flight budget holds.",
+      "K is not included. Unsupported table semantics use a Python action with a reason. Query execution errors do not prove task impossibility.",
+      "Forecast values are inherited from the original train-only aggregate tables. Pilot outcomes do not establish hidden-set quality, general 25% savings, or calibrated recovery probabilities."
+    ],
+    "execution_policy": {
+      "name": "table-query-direct-v1",
+      "applies_to": {
+        "task_type": "data_analysis",
+        "model": "qwen3.8-27b-noreason"
+      },
+      "selection_estimates": "unchanged historical base-plan proxy; not recalibrated",
+      "prompt_scope": "replaced only during serial execution, actual prompt hash/config recorded",
+      "parallel_safe": false
+    }
   }
 }

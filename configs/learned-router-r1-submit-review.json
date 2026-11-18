@@ -22,13 +22,16 @@
     "harness/submission.py": "b5aa6b8f61ca8719f5f34f556b779000c48a46487a02065347b0e95aa80b4d41",
     "harness/accounting.py": "484156c5d4ea0a3962f8aae488198a184d6e319a242f4d4a4b2a0b2ce783acb0",
     "harness/routing.py": "f79455ef0da9eda087febe6395817fa64dd5da029ccf6c195070b1c1622fea97",
-    "harness/runner.py": "dee546d417d19598cadc16eea5fff336973a9f1c6a0c49a91f669c35e38a86a8",
+    "harness/runner.py": "60a29e4ceddd4379de27292dbb777204543f24c5f821d35361a001d9ceee264a",
     "harness/planning.py": "8242e53a565ec47c82ad2ef431c88e8cfbf65b955d1fb01ee30981645ba04987",
-    "harness/deployed.py": "fce9d35d11e9413bd294671802658992f0160a83136b47ddd46babd1b8c53584",
+    "harness/deployed.py": "ac969ebb4b84a77ff88255c3c9da4112bfeb0e88aeade02701f00016fdce305d",
     "harness/rate_limit.py": "4c26d1426408845ba654c91c80876dc6c98146577828a123b4524f161efe81d2",
     "run_agent.py": "60e50e9042ac072c016290035b5d3998c793acee11a840d93fbe1092adec41b2",
     "harness/sufficiency.py": "5412d489b1a593d18459fd091cceda2017bd5f7fbd1f81b66545f5438dfb4490",
-    "harness/sufficiency_text.py": "cc5bd0822c563be65e734f370617619d008c91e53db12f29b288f3f60c815cb1"
+    "harness/sufficiency_text.py": "cc5bd0822c563be65e734f370617619d008c91e53db12f29b288f3f60c815cb1",
+    "harness/table_engine.py": "239e8993e4c4adface44b61082863f01f3519b1cd6aebf28b9667c3bfa7820d2",
+    "harness/table_actions.py": "d734d719859057d9d9a4afbb475b3d3f799f981e354f4eb48ddb650597bdef06",
+    "harness/query_policy.py": "d6847162bbe8f03d78c5463755c08d7696f765db6b0b4af1eb16035a6bc50a89"
   },
   "solver_contract": [
     {
@@ -516,12 +519,15 @@
     "harness/agent.py": "P1 termination retained. P2 explicit optional public-only pre-API checker; default off, observe leaves model history/policy unchanged, skip uses existing agent_skip_unverified/finalization only for complete Missing. Paid-tool diagnostics cannot skip; failures/truncation are Error/Unknown. R1: register exactly one in-memory submit_answer module in each isolated child, exporting the existing submit_answer/skip_task functions. Same terminal JSON, SystemExit and parent validation; no stdout recovery, workspace helper file, provider import, environment widening or cancellation/accounting change.",
     "harness/submission.py": "Retain rejected answer files and restore pre-existing files. Validation rules and coding test source remain unchanged.",
     "harness/accounting.py": "Injectable monotonic clock defaults to the production monotonic clock. Reserve formula, usage normalization, aggregate costs and configured budgets/call caps are unchanged.",
-    "harness/runner.py": "P1 decisions/admission/caps retained. Pass separate sufficiency mode/phase to run_one and record policy configuration in manifest/solution; no planner/reward/reserve changes.",
+    "harness/runner.py": "Serial query execution overlay with exact engine; base routing forecasts remain unchanged proxies; source binding and actual prompt telemetry updated.",
     "harness/planning.py": "Reuse admission/selection/next-plan ordering with replay. Optimizer coefficients/objective unchanged; equal-value selection is sorted by task/plan ID, which can change tied historical decisions.",
-    "harness/deployed.py": "Use a new separately reviewed bundle for the repaired runtime; exact hashes include checker and unchanged text adapter. P2 remains off by default, experimental and no-go for competition skip. Preserve all earlier bundle/review artifacts. R1: select separate learned-router-r1-submit bundle/review; preserve exact hash and inherited-value guards and all solver identities.",
+    "harness/deployed.py": "Serial query execution overlay with exact engine; base routing forecasts remain unchanged proxies; source binding and actual prompt telemetry updated.",
     "run_agent.py": "Update default bundle help only for repaired runtime. sufficiency remains off by default; no model/prompt/cap/reserve/planner changes. R1: update only CLI help to name the new reviewed bundle. Default path still comes from deployed.DEFAULT_BUNDLE.",
     "harness/sufficiency.py": "Concrete JSON product defect fixed: every known operand is validated before claiming absence; exact integer/string zero makes incomplete product derivable, floating zero without lexical provenance stays Unknown. v3-reviewed diagnostics. Existing text grammar, read limits, paths and policy modes unchanged.",
-    "harness/sufficiency_text.py": "New independent full-sentence English/Russian grammar for latest-row-per-key then sum. Field/path captures use no IDs or labels. Unique complete CSV schema required; finite numeric data/unique order validated; lower-row nulls ignored, explicit product and zero inference supported, ambiguous schema/order or unmodeled derivations stay Unknown. Complete Missing only after this verification."
+    "harness/sufficiency_text.py": "New independent full-sentence English/Russian grammar for latest-row-per-key then sum. Field/path captures use no IDs or labels. Unique complete CSV schema required; finite numeric data/unique order validated; lower-row nulls ignored, explicit product and zero inference supported, ambiguous schema/order or unmodeled derivations stay Unknown. Complete Missing only after this verification.",
+    "harness/table_engine.py": "Serial query execution overlay with exact engine; base routing forecasts remain unchanged proxies; source binding and actual prompt telemetry updated.",
+    "harness/table_actions.py": "Serial query execution overlay with exact engine; base routing forecasts remain unchanged proxies; source binding and actual prompt telemetry updated.",
+    "harness/query_policy.py": "Serial query execution overlay with exact engine; base routing forecasts remain unchanged proxies; source binding and actual prompt telemetry updated."
   },
   "verification_sources": {
     "harness/bundle.py": "1a98e6945ab6c8be644e2ea30d951f5957a00cdb1a0efe58cdd9a841e76fe9f9",
@@ -559,24 +565,13 @@
   "forecast_support": "inherited_v2_base_plan_estimates",
   "real_quality_revalidated": false,
   "limitations": [
-    "Local P2 candidate only. No new real-provider quality, cost, calibration, token savings or benchmark measurement.",
-    "Original v2 estimates are inherited only for unchanged base solver model/prompt/caps. Enabled preflight skip changes policy outcomes and has no measured success/expense estimates.",
-    "Checker defaults off; observe records diagnostics without changing model-facing messages or planning decisions, except bounded local wall time. Explicit skip is limited to exact supported public contracts and complete Missing before first send.",
-    "Post-tool diagnostics read original named public source paths as observed after an already paid tool action; they cannot skip or save the first model call. Failed/truncated tool output never supplies Missing.",
-    "Natural-language operations outside the explicit latest_sum grammar, undeclared derivations, nonfunctional/unknown chains and incomplete sources are unsupported/Unknown. Local time checks are cooperative between bounded parsing/regular-file I/O operations.",
-    "Historical P1 termination/deadline/admission changes remain reviewed here. Old control and P1 bundles/reviews are preserved and require their matching source snapshots.",
-    "Text applicability is limited to one full-sentence CSV operation chosen from two public train inputs. No general natural-language interpretation or classification.",
-    "128 public tasks inspected only for applicability after design freeze: 2 plans/Found, 126 Unknown, 0 Missing. No demonstrated savings on historical underdetermined tasks; holdout/original regression did not tune rules.",
-    "Additional known unmodeled fields/sources can downgrade natural-language nulls to Unknown; numeric/order failures cannot prove Missing.",
-    "New independent text fixtures exercise paraphrases, schema/path/entity renames, empty input, irrelevant nulls, explicit product/zero, ambiguity and limits; private expectations never enter interpreter.",
-    "Admission gate rejected paid P2 pilot: 24 fresh development tasks in 9 mechanism families, 4 plans only in deliberate positive controls, 0/20 outside controls. Two certified Missing controls, no false Missing/skip among 12 solvable fixtures. This is not an estimate on the competition distribution.",
-    "Independent SQLite references and two-world/interpretation ambiguity certificates are private-grader-only. Gate and public/private hashes were sealed before each offline comparison.",
-    "No real paired solver experiment, no score/cost/call savings or 15% expense criterion measured. Existing campaign collector was reviewed; paid preparation was not warranted after offline no-go.",
-    "JSON zero represented as floating 0.0 with an unknown other factor stays Unknown: parser may have underflowed a nonzero literal. Integer/string exact zero is safely derivable.",
-    "R1 wrapper import compatibility is verified only with local subprocesses and synthetic MockTransport responses, including the exact saved P3 response. No new API calls, measured score gain, cost/call saving, calibration or real quality revalidation.",
-    "The sole helper module is submit_answer, reserved in the isolated tool sys.modules. It exposes the existing functions and does not persist into nested independently launched interpreters or the controlling process. Python tooling remains container-dependent, not a new security sandbox.",
-    "Prompts, revision bounded-json-agent-v4 and all sixteen solver configurations remain unchanged. External contract documentation is not supplied to the model. Historical traces and previous bundles/reviews remain valid only for their original runtime snapshots.",
-    "Current source includes the prior reviewed cancellation/answer boundary/P2 changes; P2 defaults off. R1 changes no selection, model, cap, budget reserve, budget-tail plan or concurrency."
+    "Historical routing estimates and execution caps are unchanged. Only data_analysis qwen3.8-27b-noreason execution is overlaid with table-query-direct-v1; no 25% discount is applied to forecasts.",
+    "The overlay changes the model prompt and answer protocol; old CSV success/cost estimates are proxies, not measurements of this new policy. Other solver model/prompt/caps remain unchanged.",
+    "Development pilot on 16 identical synthetic tasks: baseline 3218.2 units, query v2 2412.6; all 14 solvable answered correctly, two underdetermined cases had no answer file, one lacked explicit skip. Baseline is historical, not contemporaneous.",
+    "The current prompt additionally names fractional revenue support and skip_task. These instruction changes have offline tests, not a new live quality run.",
+    "This execution scope patches process-local prompt/tool functions and is supported only by the existing serial runner. Concurrency requires per-task isolation and shared in-flight budget holds.",
+    "K is not included. Unsupported table semantics use a Python action with a reason. Query execution errors do not prove task impossibility.",
+    "Forecast values are inherited from the original train-only aggregate tables. Pilot outcomes do not establish hidden-set quality, general 25% savings, or calibrated recovery probabilities."
   ],
   "verification_commands": [
     ".venv/bin/python -m unittest discover -s tests -p test_submission.py -v",
@@ -604,5 +599,15 @@
     "fixture": "tests/fixtures/p3-submit-import",
     "baseline_reproduction": "reports/r1-submit-helper-20261110/before-reproduction.json",
     "new_api_calls": 0
+  },
+  "execution_policy": {
+    "name": "table-query-direct-v1",
+    "applies_to": {
+      "task_type": "data_analysis",
+      "model": "qwen3.8-27b-noreason"
+    },
+    "selection_estimates": "unchanged historical base-plan proxy; not recalibrated",
+    "prompt_scope": "replaced only during serial execution, actual prompt hash/config recorded",
+    "parallel_safe": false
   }
 }

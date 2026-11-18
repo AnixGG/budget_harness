@@ -23,6 +23,16 @@ SWITCH = {'invalid_response', 'submission_rejected', 'tool_error', 'tool_needs_c
 
 async def run_plan(directory, candidate, ledger, artifacts, *, backend='real', allow_local_exec=False,
                    provider_factory=None, sufficiency_mode='off', sufficiency_phase='pre_api'):
+    from .query_policy import eligible, execute as execute_query
+    options=dict(backend=backend,allow_local_exec=allow_local_exec,provider_factory=provider_factory,
+                 sufficiency_mode=sufficiency_mode,sufficiency_phase=sufficiency_phase)
+    if eligible(directory,candidate):
+        return await execute_query(directory,candidate,ledger,artifacts,run_ordinary_plan,**options)
+    return await run_ordinary_plan(directory,candidate,ledger,artifacts,**options)
+
+
+async def run_ordinary_plan(directory, candidate, ledger, artifacts, *, backend='real', allow_local_exec=False,
+                            provider_factory=None, sufficiency_mode='off', sufficiency_phase='pre_api'):
     if provider_factory is None:
         from .provider import JiuwenProvider
         provider_factory = JiuwenProvider
